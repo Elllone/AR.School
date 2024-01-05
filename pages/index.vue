@@ -1,3 +1,3 @@
 <template>
-   <!-- Index -->
+  <school-welcome />
 </template>
