@@ -1,6 +1,6 @@
 import type { RoutsInterface } from '~/types/routs'
 
-export const routs: RoutsInterface[] = [
+export const navBarRouts: RoutsInterface[] = [
   {
     icon: 'mdi-home',
     title: 'Главная',

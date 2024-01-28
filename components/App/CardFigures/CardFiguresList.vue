@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import CardFiguresDialog from './CardFiguresDialog.vue'
+import { figures } from '~/mock/figures'
 
 const searchField = ref('')
-const figuresList = {
-  figures: ['треугольник', 'квадрат', 'пятиугольник', 'шестиугольник'],
-}
 </script>
 <template>
   <v-row>
@@ -17,25 +14,25 @@ const figuresList = {
     </v-col>
     <v-col cols="12">
       <v-data-iterator
-        :items="figuresList.figures"
+        :items="figures"
         :items-per-page="-1"
         :search="searchField"
       >
         <template #default="{ items }">
           <v-row>
             <v-col v-for="{ raw: figure } in items" :key="figure">
-              <card-figures-dialog>
-                <template #activator="{ props }">
-                  <v-card
-                    min-width="200"
-                    min-height="200"
-                    color="green"
-                    v-bind="props"
-                  >
-                    <v-container> {{ figure }} </v-container>
-                  </v-card>
-                </template>
-              </card-figures-dialog>
+              <v-card
+                min-width="200"
+                min-height="200"
+                color="green"
+                @click="
+                  navigateTo({
+                    path: figure.url,
+                  })
+                "
+              >
+                <v-container> {{ figure.name }} </v-container>
+              </v-card>
             </v-col>
           </v-row>
         </template>

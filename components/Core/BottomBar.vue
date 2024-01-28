@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { routs } from '~/constants/routs'
+import { navBarRouts } from '~/constants/routs'
 </script>
 <template>
-  <v-bottom-navigation grow mode="shift">
+  <v-bottom-navigation grow>
     <v-btn
-      v-for="rout in routs"
+      v-for="rout in navBarRouts"
       :key="rout.routerPushObject.name"
       :to="rout.routerPushObject"
     >
