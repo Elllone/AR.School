@@ -1,3 +1,3 @@
 <template>
-  <school-welcome />
+  <app-card-figures />
 </template>

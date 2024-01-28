@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "vue.complete.casing.tags": "kebab",
+  "vue.complete.casing.props": "kebab"
+}

@@ -5,8 +5,8 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true,
   },
-  ssr: true,
-  devtools: { enabled: true },
+  ssr: false,
+  devtools: { enabled: false },
 
   imports: {
     presets: [
@@ -20,6 +20,9 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   modules: ['nuxt-typed-router', '@pinia/nuxt', '@nuxtjs/google-fonts'],
+  pinia: {
+    storesDirs: ['./stores/**'],
+  },
   vite: {
     plugins: [vuetify({ autoImport: true })],
     vue: {
