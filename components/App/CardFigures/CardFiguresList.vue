@@ -27,11 +27,11 @@ const searchField = ref('')
                 color="green"
                 @click="
                   navigateTo({
-                    path: figure.url,
+                    path: `/figure/${(figure as Figure).pathUrl}`,
                   })
                 "
               >
-                <v-container> {{ figure.name }} </v-container>
+                <v-container> {{ (figure as Figure).name }} </v-container>
               </v-card>
             </v-col>
           </v-row>

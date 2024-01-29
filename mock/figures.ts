@@ -1,18 +1,25 @@
-export const figures = [
+import { type Figure, FiguresNameEnum } from '~/types/figures'
+import { RusifedFiguresNameEnum } from '~/constants/figures'
+
+export const figures: Figure[] = [
   {
-    url: 'triangle',
-    name: 'Треугольник',
+    pathUrl: FiguresNameEnum.triangle,
+    name: RusifedFiguresNameEnum.triangle,
+    description: 'Треугольник',
   },
   {
-    url: 'square',
-    name: 'Квадрат',
+    pathUrl: FiguresNameEnum.square,
+    name: RusifedFiguresNameEnum.square,
+    description: 'Квадрат',
   },
   {
-    url: 'pentagon',
-    name: 'Пятиугольник',
+    pathUrl: FiguresNameEnum.pentagon,
+    name: RusifedFiguresNameEnum.pentagon,
+    description: 'Пятиугольник',
   },
   {
-    url: 'hexagon',
-    name: 'Шестиугольник',
+    pathUrl: FiguresNameEnum.hexagon,
+    name: RusifedFiguresNameEnum.hexagon,
+    description: 'Шестиугольник',
   },
 ]

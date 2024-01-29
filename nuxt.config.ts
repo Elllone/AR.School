@@ -15,6 +15,7 @@ export default defineNuxtConfig({
         imports: ['createVuetify'],
       },
     ],
+    dirs: ['./types/**'],
   },
   build: {
     transpile: ['vuetify'],
