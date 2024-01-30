@@ -11,8 +11,9 @@ const { figure } = defineProps<{
       <v-col>
         <v-card>
           <v-card-title class="d-flex justify-center">
-            <p> Названия фигуры </p>
+            <p> {{ figure.name }}</p>
           </v-card-title>
+          <v-divider />
           <v-container>
             <figure-container-web-gl :figure="figure" />
           </v-container>

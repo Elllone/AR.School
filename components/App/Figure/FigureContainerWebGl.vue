@@ -6,7 +6,7 @@ const { figure } = defineProps<{
 const canvasScene = ref<HTMLDivElement>()
 
 function injectWebGl() {
-  const { renderer, animate } = useRenderScene()
+  const { renderer, animate } = useRenderScene(figure)
   if (canvasScene.value !== undefined) {
     canvasScene.value.appendChild(renderer.domElement)
     animate()
@@ -17,13 +17,17 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div>
-    <div ref="canvasScene" class="canvas" />
-  </div>
+  <v-responsive>
+    <div class="wrapper-canvas">
+      <div ref="canvasScene" class="canvas" />
+    </div>
+  </v-responsive>
 </template>
 
 <style>
-canvas {
-  width: 100%;
+.wrapper-canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
