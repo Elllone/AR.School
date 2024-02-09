@@ -20,7 +20,12 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-  modules: ['nuxt-typed-router', '@pinia/nuxt', '@nuxtjs/google-fonts'],
+  modules: [
+    'nuxt-typed-router',
+    '@pinia/nuxt',
+    '@nuxtjs/google-fonts',
+    '@tresjs/nuxt',
+  ],
   pinia: {
     storesDirs: ['./stores/**'],
   },
