@@ -1,3 +1,3 @@
 <template>
-  <app-card-figures />
+  <div> </div>
 </template>

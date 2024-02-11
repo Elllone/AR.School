@@ -8,7 +8,7 @@ export default defineNuxtPlugin({
   name: 'vuetify',
   setup: async (nuxtApp) => {
     const vuetify = createVuetify({
-      ssr: false,
+      ssr: true,
       blueprint: md3,
       theme: {
         defaultTheme: 'dark',

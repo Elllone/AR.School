@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true,
   },
-  ssr: false,
+  ssr: true,
   devtools: { enabled: false },
 
   imports: {
