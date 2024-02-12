@@ -1,5 +1,5 @@
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
-  //common
   typescript: {
     shim: true,
     strict: true,
@@ -7,8 +7,6 @@ export default defineNuxtConfig({
   },
   ssr: true,
   devtools: { enabled: false },
-
-  //auto imports
   components: [
     {
       path: './components',
@@ -16,29 +14,33 @@ export default defineNuxtConfig({
     },
   ],
   imports: {
+    presets: [
+      {
+        from: 'vuetify',
+        imports: ['createVuetify'],
+      },
+    ],
     dirs: ['./types/**'],
   },
-
-  //plugins[modules]
+  build: {
+    transpile: ['vuetify'],
+  },
   modules: [
-    'nuxt-primevue',
     'nuxt-typed-router',
     '@pinia/nuxt',
     '@nuxtjs/google-fonts',
     '@tresjs/nuxt',
   ],
-  css: ['primevue/resources/themes/lara-dark-green/theme.css'],
-  primevue: {
-    options: {
-      ripple: true,
-    },
-    components: {
-      include: '*',
-      prefix: 'Pr',
-    },
-  },
   pinia: {
     storesDirs: ['./stores/**'],
+  },
+  vite: {
+    plugins: [vuetify({ autoImport: true })],
+    vue: {
+      template: {
+        transformAssetUrls,
+      },
+    },
   },
   googleFonts: {
     families: {
@@ -48,7 +50,6 @@ export default defineNuxtConfig({
     },
   },
 
-  //develop
   devServer: {
     port: 5176,
   },
