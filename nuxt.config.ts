@@ -27,7 +27,10 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@tresjs/nuxt',
   ],
-  css: ['primevue/resources/themes/lara-dark-green/theme.css'],
+  css: [
+    'primevue/resources/themes/lara-dark-green/theme.css',
+    'primeflex/primeflex.css',
+  ],
   primevue: {
     options: {
       ripple: true,
