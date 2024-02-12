@@ -7,7 +7,12 @@ export default defineNuxtConfig({
   },
   ssr: true,
   devtools: { enabled: false },
-
+  components: [
+    {
+      path: './components',
+      pathPrefix: false,
+    },
+  ],
   imports: {
     presets: [
       {
