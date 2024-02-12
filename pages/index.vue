@@ -1,3 +1,3 @@
 <template>
-  <ar-school-welcome />
+  <div> </div>
 </template>
