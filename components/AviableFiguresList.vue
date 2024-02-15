@@ -1,18 +1,13 @@
 <template>
   <v-card color="grey-darken-4">
     <v-container>
-      <div class="figure_list">
-        <aviable-figures-card v-for="i in 3" :key="i" />
-      </div>
+      <swiper :modules="[SwiperNavigation]" :navigation="true">
+        <swiper-slide v-for="n in 2" :key="n">
+          <div class="d-flex justify-center">
+            <aviable-figures-card />
+          </div>
+        </swiper-slide>
+      </swiper>
     </v-container>
   </v-card>
 </template>
-
-<style scoped>
-.figure_list {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  overflow-x: scroll;
-}
-</style>

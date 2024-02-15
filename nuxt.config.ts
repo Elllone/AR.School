@@ -36,6 +36,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/google-fonts',
     '@tresjs/nuxt',
+    'nuxt-swiper',
   ],
   pinia: {
     storesDirs: ['./stores/**'],

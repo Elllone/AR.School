@@ -1,5 +1,5 @@
 <template>
-  <v-card color="white" min-width="280px">
+  <v-card color="white" min-width="280px" max-width="300px">
     <v-card-title>
       <v-img
         rounded="lg"
@@ -15,7 +15,7 @@
     <v-divider />
     <v-card-title>
       <div class="d-flex justify-end">
-        <v-btn><v-icon icon="mdi-rotate-3d" size="28" /> </v-btn>
+        <v-btn icon="mdi-rotate-3d" size="48" />
       </div>
     </v-card-title>
   </v-card>
