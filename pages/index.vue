@@ -1,3 +1,10 @@
+<script setup>
+useHead({
+  title: 'AR.School',
+})
+</script>
 <template>
-  <div> </div>
+  <v-container>
+    <ar-school-welcome />
+  </v-container>
 </template>

@@ -1,5 +1,6 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
+  //common
   typescript: {
     shim: true,
     strict: true,
@@ -7,6 +8,8 @@ export default defineNuxtConfig({
   },
   ssr: true,
   devtools: { enabled: false },
+
+  //auto imports
   components: [
     {
       path: './components',
@@ -22,6 +25,9 @@ export default defineNuxtConfig({
     ],
     dirs: ['./types/**'],
   },
+  css: ['vuetify/styles', '@mdi/font/css/materialdesignicons.css'],
+
+  //plugins[modules]
   build: {
     transpile: ['vuetify'],
   },
@@ -50,6 +56,7 @@ export default defineNuxtConfig({
     },
   },
 
+  //develop
   devServer: {
     port: 5176,
   },

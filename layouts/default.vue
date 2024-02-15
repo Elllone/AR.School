@@ -1,7 +1,7 @@
 <template>
-  <v-app-bar>
+  <v-app-bar rounded="lg" class="header_layout">
     <template #prepend>
-      <h1 class="ma-1"> LOGO </h1>
+      <h1 class="ma-1 text-blue"> AR.School</h1>
     </template>
     <v-container class="mx-auto d-flex align-center justify-center">
       <v-spacer />
@@ -18,12 +18,30 @@
       </v-responsive>
     </v-container>
   </v-app-bar>
-  <v-main>
+  <v-main class="main_layout">
     <slot />
   </v-main>
-  <v-footer app>
-    <div class="d-flex justify-end w-100">
-      {{ new Date().getFullYear() }}
-    </div>
-  </v-footer>
 </template>
+<style scoped>
+.header_layout {
+  background-color: transparent !important ;
+  backdrop-filter: blur(8px);
+}
+.main_layout {
+  background: linear-gradient(-45deg, #040516, #070423);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+</style>
