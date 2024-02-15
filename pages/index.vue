@@ -5,6 +5,16 @@ useHead({
 </script>
 <template>
   <v-container>
-    <ar-school-welcome />
+    <div class="main_wrapper">
+      <ar-school-welcome />
+      <aviable-figures-block />
+    </div>
   </v-container>
 </template>
+<style scoped>
+.main_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+</style>
