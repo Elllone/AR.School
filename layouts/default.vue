@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar rounded="lg" class="header_layout">
+  <v-app-bar rounded="lg" class="blur_background">
     <template #prepend>
       <h1 class="ma-1 text-blue"> AR.School</h1>
     </template>
@@ -21,9 +21,30 @@
   <v-main class="main_layout">
     <slot />
   </v-main>
+
+  <v-footer class="blur_background">
+    <v-container class="d-flex justify-space-between">
+      <v-row class="align-center">
+        <v-col cols="12" md="6">
+          <p class="text-h5 font-weight-bold">
+            Изучайте, открывайте и осваиваете мир геометрии с
+            <span class="text-blue">AR.School</span>
+          </p></v-col
+        >
+        <v-col cols="12" md="6">
+          <div class="float-right">
+            <p>
+              © {{ new Date().getFullYear() }}
+              <span class="text-blue">AR.School</span>
+            </p>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-footer>
 </template>
 <style scoped>
-.header_layout {
+.blur_background {
   background-color: transparent !important ;
   backdrop-filter: blur(8px);
 }
