@@ -1,7 +1,7 @@
 <template>
-  <v-app-bar rounded="lg" class="blur_background">
+  <v-app-bar rounded="lg" class="blur_background app_bar">
     <template #prepend>
-      <h1 class="ma-1 text-blue"> AR.School</h1>
+      <h1 class="ma-1 text-blue cursor" @click="navigateTo('/')"> AR.School</h1>
     </template>
     <v-container class="mx-auto d-flex align-center justify-center">
       <v-spacer />
@@ -44,6 +44,13 @@
   </v-footer>
 </template>
 <style scoped>
+.cursor {
+  cursor: pointer;
+}
+
+.app_bar {
+  view-timeline-name: app-bar;
+}
 .blur_background {
   background-color: transparent !important ;
   backdrop-filter: blur(8px);

@@ -25,7 +25,11 @@ export default defineNuxtConfig({
     ],
     dirs: ['./types/**'],
   },
-  css: ['vuetify/styles', '@mdi/font/css/materialdesignicons.css'],
+  css: [
+    'vuetify/styles',
+    '@mdi/font/css/materialdesignicons.css',
+    '~/assets/css/main.css',
+  ],
 
   //plugins[modules]
   build: {
@@ -60,5 +64,8 @@ export default defineNuxtConfig({
   //develop
   devServer: {
     port: 5176,
+  },
+  experimental: {
+    viewTransition: true,
   },
 })
