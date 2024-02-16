@@ -1,9 +1,9 @@
 <template>
-  <top-app-bar />
+  <core-default-layout-top-app-bar />
   <v-main class="main_layout">
     <slot />
   </v-main>
-  <bottom-app-footer />
+  <core-default-layout-bottom-app-footer />
 </template>
 <style scoped>
 .main_layout {

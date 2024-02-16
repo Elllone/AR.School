@@ -1,5 +1,12 @@
 <script setup lang="ts">
 const props = defineProps<{ figure: Figure }>()
+
+function navigateTo3D_AR() {
+  navigateTo({
+    name: 'figure-figureSlug-3d',
+    params: { figureSlug: props.figure.slug },
+  })
+}
 </script>
 
 <template>
@@ -15,7 +22,7 @@ const props = defineProps<{ figure: Figure }>()
       <v-divider />
       <v-card-actions>
         <div class="d-flex justify-end w-100">
-          <v-btn>Открыть в 3D/AR</v-btn>
+          <v-btn @click="navigateTo3D_AR()">Открыть в 3D/AR</v-btn>
         </div>
       </v-card-actions>
     </v-card>
