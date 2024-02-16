@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { StyleValue } from 'vue'
 
-const props = defineProps<{ figure: string }>() //Заглушка
+const props = defineProps<{ figure: Figure }>()
 
 const styleValueImg = ref<StyleValue>()
 
 function navigateToFigure() {
-  styleValueImg.value = { viewTransitionName: props.figure }
-  navigateTo({ name: 'figure-figure', params: { figure: props.figure } })
+  styleValueImg.value = { viewTransitionName: props.figure.slug }
+  navigateTo({ name: 'figure-figure', params: { figure: props.figure.slug } })
 }
 </script>
 
@@ -16,15 +16,15 @@ function navigateToFigure() {
     <v-card-title>
       <v-img
         :style="styleValueImg"
+        :src="figure.image"
         rounded="lg"
         width="280px"
         height="280px"
-        src="/images/figureExample.png"
       />
     </v-card-title>
     <v-divider />
     <v-container>
-      <p class="text-h5 font-weight-bold">{{ figure }}</p>
+      <p class="text-h5 font-weight-bold">{{ figure.name }}</p>
     </v-container>
     <v-divider />
     <v-card-title>

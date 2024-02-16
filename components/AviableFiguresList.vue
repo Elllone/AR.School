@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const { figures } = storeToRefs(useFiguresStore())
+</script>
+
 <template>
   <v-card color="grey-darken-4">
     <v-container>
@@ -7,8 +11,12 @@
         slides-per-view="auto"
         space-between="30"
       >
-        <swiper-slide v-for="n in 2" :key="n" class="swiper-width">
-          <aviable-figures-card :figure="'Figure_' + n" />
+        <swiper-slide
+          v-for="figure in figures"
+          :key="figure.slug"
+          class="swiper-width"
+        >
+          <aviable-figures-card :figure="figure" />
         </swiper-slide>
       </swiper>
     </v-container>
