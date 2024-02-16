@@ -49,8 +49,9 @@
 }
 
 .app_bar {
-  view-timeline-name: app-bar;
+  view-transition-name: app-bar;
 }
+
 .blur_background {
   background-color: transparent !important ;
   backdrop-filter: blur(8px);

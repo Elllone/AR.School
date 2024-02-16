@@ -24,11 +24,11 @@ function navigateToFigure() {
       <p class="text-h5 font-weight-bold">{{ figure.name }}</p>
     </v-container>
     <v-divider />
-    <v-card-title>
-      <div class="d-flex justify-end">
+    <v-card-actions>
+      <div class="d-flex justify-end w-100">
         <v-btn @click="() => navigateToFigure()">Открыть</v-btn>
       </div>
-    </v-card-title>
+    </v-card-actions>
   </v-card>
 </template>
 
