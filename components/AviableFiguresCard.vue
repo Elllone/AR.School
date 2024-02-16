@@ -7,20 +7,17 @@ const styleValueImg = ref<StyleValue>()
 
 function navigateToFigure() {
   styleValueImg.value = { viewTransitionName: props.figure.slug }
-  navigateTo({ name: 'figure-figure', params: { figure: props.figure.slug } })
+  navigateTo({
+    name: 'figure-figureSlug',
+    params: { figureSlug: props.figure.slug },
+  })
 }
 </script>
 
 <template>
   <v-card color="white" min-width="280px" max-width="300px">
-    <v-card-title>
-      <v-img
-        :style="styleValueImg"
-        :src="figure.image"
-        rounded="lg"
-        width="280px"
-        height="280px"
-      />
+    <v-card-title class="d-flex justify-center align-center">
+      <img :src="figure.image" :style="styleValueImg" class="figure_img" />
     </v-card-title>
     <v-divider />
     <v-container>
@@ -29,12 +26,16 @@ function navigateToFigure() {
     <v-divider />
     <v-card-title>
       <div class="d-flex justify-end">
-        <v-btn
-          icon="mdi-rotate-3d"
-          size="48"
-          @click="() => navigateToFigure()"
-        />
+        <v-btn @click="() => navigateToFigure()">Открыть</v-btn>
       </div>
     </v-card-title>
   </v-card>
 </template>
+
+<style scoped>
+.figure_img {
+  width: 280px;
+  height: 280px;
+  border-radius: 4px;
+}
+</style>
