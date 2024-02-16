@@ -1,1 +1,14 @@
-/* ....... */
+/* Common */
+.blur_background {
+  background-color: transparent !important ;
+  backdrop-filter: blur(8px);
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* TopAppBar.vue */
+.app_bar {
+  view-transition-name: app-bar;
+}
