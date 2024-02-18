@@ -7,6 +7,10 @@ const sceneHtml = ref<HTMLElement>()
 const renderManager = new RenderManager({ setOrbitControls: true })
 onMounted(() => {
   renderManager.mountRenderer(sceneHtml.value!)
+  const geometry = useMeshFigure(props.figure)
+  if (geometry) {
+    renderManager.addMeshObject(geometry)
+  }
   renderManager.startAnimation()
 })
 </script>

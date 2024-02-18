@@ -2,9 +2,9 @@ import {
   Scene,
   PerspectiveCamera,
   WebGLRenderer,
-  BoxGeometry,
-  MeshBasicMaterial,
   Mesh,
+  DirectionalLight,
+  AmbientLight,
   type Renderer,
 } from 'three'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
@@ -35,8 +35,7 @@ export class RenderManager {
     if (setOrbitControls) {
       new OrbitControls(this.#camera, this.#renderer.domElement)
     }
-
-    this.#addMeshObject()
+    this.#addPointLight()
   }
 
   #createRenderer() {
@@ -60,11 +59,12 @@ export class RenderManager {
     this.#camera.lookAt(this.#scene.position)
   }
 
-  #addMeshObject() {
-    const geometry = new BoxGeometry(1, 1, 1)
-    const material = new MeshBasicMaterial({ color: 0x00ff00 })
-    const cube = new Mesh(geometry, material)
-    this.#scene.add(cube)
+  #addPointLight() {
+    const light1 = new DirectionalLight(0xffffff, 3)
+    const light2 = new AmbientLight(0x404040)
+    light1.position.set(10, 10, 4)
+    this.#scene.add(light1)
+    this.#scene.add(light2)
   }
 
   #initResizeObserver(el: HTMLElement) {
@@ -79,6 +79,10 @@ export class RenderManager {
       })
     })
     resizeObserver.observe(el)
+  }
+
+  addMeshObject(mesh: Mesh) {
+    this.#scene.add(mesh)
   }
 
   mountRenderer(el: HTMLElement) {
