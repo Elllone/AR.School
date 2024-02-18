@@ -55,7 +55,7 @@ export class RenderManager {
   }
 
   #initCamera() {
-    this.#camera.position.set(0, 0, 11)
+    this.#camera.position.set(0, 0, 2)
     this.#camera.lookAt(this.#scene.position)
   }
 
