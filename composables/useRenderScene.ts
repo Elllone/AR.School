@@ -5,23 +5,94 @@ import {
   BoxGeometry,
   MeshBasicMaterial,
   Mesh,
+  type Renderer,
 } from 'three'
-export function useRenderScene() {
-  const W = window.innerWidth
-  const H = window.innerHeight
-  const scene = new Scene()
-  const camera = new PerspectiveCamera(75, W / H, 0.1, 1000)
-  const canvas = document.createElement('canvas')
-  canvas.id = 'canvasScene'
-  const renderer = new WebGLRenderer({ antialias: true, canvas })
+import { OrbitControls } from 'three/examples/jsm/Addons.js'
 
-  function animate() {
-    requestAnimationFrame(animate)
-    renderer.render(scene, camera)
+interface RenderManagerInitArgs {
+  scene?: Scene
+  camera?: PerspectiveCamera
+  setOrbitControls?: boolean
+}
+
+export class RenderManager {
+  #scene: Scene
+  #camera: PerspectiveCamera
+  #renderer: Renderer
+
+  #tanFov: number
+  #firstHeight: number | null = null
+
+  constructor({ scene, camera, setOrbitControls }: RenderManagerInitArgs = {}) {
+    this.#scene = scene ?? new Scene()
+    this.#camera = camera ?? new PerspectiveCamera()
+
+    this.#tanFov = Math.tan(((Math.PI / 180) * this.#camera.fov) / 2)
+
+    this.#initCamera()
+    this.#renderer = this.#createRenderer()
+
+    if (setOrbitControls) {
+      new OrbitControls(this.#camera, this.#renderer.domElement)
+    }
+
+    this.#addMeshObject()
   }
 
-  return {
-    renderer,
-    animate,
+  #createRenderer() {
+    const canvas = document.createElement('canvas')
+    const renderer = new WebGLRenderer({ antialias: true, canvas })
+    return renderer
+  }
+
+  #setSizeRendererScene({ width, height }: { width: number; height: number }) {
+    this.#camera.aspect = width / height
+    this.#camera.fov =
+      (360 / Math.PI) * Math.atan(this.#tanFov * (width / this.#firstHeight!))
+
+    this.#camera.updateProjectionMatrix()
+    this.#camera.lookAt(this.#scene.position)
+    this.#renderer.setSize(width, height)
+  }
+
+  #initCamera() {
+    this.#camera.position.set(0, 0, 11)
+    this.#camera.lookAt(this.#scene.position)
+  }
+
+  #addMeshObject() {
+    const geometry = new BoxGeometry(1, 1, 1)
+    const material = new MeshBasicMaterial({ color: 0x00ff00 })
+    const cube = new Mesh(geometry, material)
+    this.#scene.add(cube)
+  }
+
+  #initResizeObserver(el: HTMLElement) {
+    const resizeObserver = new ResizeObserver((entries) => {
+      const { width, height } = entries[0].contentRect
+      if (this.#firstHeight === null) {
+        this.#firstHeight = height
+      }
+      this.#setSizeRendererScene({
+        width: Math.floor(width),
+        height: Math.floor(height),
+      })
+    })
+    resizeObserver.observe(el)
+  }
+
+  mountRenderer(el: HTMLElement) {
+    const { width, height } = el.getBoundingClientRect()
+    this.#initResizeObserver(el)
+    this.#setSizeRendererScene({ width, height })
+    el.appendChild(this.#renderer.domElement)
+  }
+
+  startAnimation() {
+    const animateFunction = () => {
+      this.#renderer.render(this.#scene, this.#camera)
+      requestAnimationFrame(animateFunction)
+    }
+    animateFunction()
   }
 }

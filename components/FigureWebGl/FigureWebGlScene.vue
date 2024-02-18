@@ -3,20 +3,20 @@ const props = defineProps<{ figure: Figure }>()
 useHead({
   title: props.figure.name,
 })
-const sceneDom = ref<HTMLDivElement>()
-function setupScene() {
-  const { renderer, animate } = useRenderScene()
-  sceneDom.value?.appendChild(renderer.domElement)
-  animate()
-}
-onMounted(() => setupScene())
+const sceneHtml = ref<HTMLElement>()
+const renderManager = new RenderManager({ setOrbitControls: true })
+onMounted(() => {
+  renderManager.mountRenderer(sceneHtml.value!)
+  renderManager.startAnimation()
+})
 </script>
 <template>
-  <div ref="sceneDom"> </div>
+  <div ref="sceneHtml" class="sceneHtml"> </div>
 </template>
 
-<style>
-#canvasScene {
+<style scoped>
+.sceneHtml {
   width: 100%;
+  height: 90%;
 }
 </style>

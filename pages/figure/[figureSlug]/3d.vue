@@ -11,7 +11,7 @@ const figure = getFigureBySlug(figureSlug) as Figure
 </script>
 
 <template>
-  <v-container>
+  <v-container class="h-100 d-flex justify-center align-center">
     <client-only>
       <figure-web-gl-scene :figure="figure" />
     </client-only>
