@@ -32,9 +32,6 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@pinia/nuxt": "^0.5.1",
-    "@tresjs/cientos": "^3.8.0",
-    "@tresjs/core": "^3.7.0",
-    "@tresjs/nuxt": "^2.1.1",
     "nuxt-swiper": "^1.2.2",
     "pinia": "^2.1.7",
     "three": "^0.161.0",

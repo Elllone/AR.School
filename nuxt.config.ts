@@ -39,7 +39,6 @@ export default defineNuxtConfig({
     'nuxt-typed-router',
     '@pinia/nuxt',
     '@nuxtjs/google-fonts',
-    '@tresjs/nuxt',
     'nuxt-swiper',
   ],
   pinia: {
