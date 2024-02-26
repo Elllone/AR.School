@@ -8,6 +8,9 @@ export default defineNuxtConfig({
   },
   ssr: true,
   devtools: { enabled: false },
+  app: {
+    rootId: '__ar__school',
+  },
 
   //auto imports
   components: [
