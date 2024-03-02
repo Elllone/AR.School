@@ -4,14 +4,9 @@ useHead({
   title: props.figure.name,
 })
 const sceneHtml = ref<HTMLElement>()
-const renderManager = new RenderManager({ setOrbitControls: true })
 onMounted(() => {
+  const renderManager = new RenderManager(props.figure)
   renderManager.mountRenderer(sceneHtml.value!)
-  const geometry = useMeshFigure(props.figure)
-  if (geometry) {
-    renderManager.addMeshObject(geometry)
-  }
-  renderManager.startAnimation()
 })
 </script>
 <template>

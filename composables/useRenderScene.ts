@@ -1,49 +1,30 @@
-import {
-  Scene,
-  PerspectiveCamera,
-  WebGLRenderer,
-  Mesh,
-  DirectionalLight,
-  AmbientLight,
-  type Renderer,
-} from 'three'
+import { Scene, PerspectiveCamera, type Renderer, Object3D } from 'three'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
-
-interface RenderManagerInitArgs {
-  scene?: Scene
-  camera?: PerspectiveCamera
-  setOrbitControls?: boolean
-}
 
 export class RenderManager {
   #scene: Scene
   #camera: PerspectiveCamera
   #renderer: Renderer
-
-  #tanFov: number
+  #tanFov!: number
   #firstHeight: number | null = null
 
-  constructor({ scene, camera, setOrbitControls }: RenderManagerInitArgs = {}) {
-    this.#scene = scene ?? new Scene()
-    this.#camera = camera ?? new PerspectiveCamera()
-
-    this.#tanFov = Math.tan(((Math.PI / 180) * this.#camera.fov) / 2)
-
+  constructor(figure: Figure) {
+    this.#scene = new Scene()
+    this.#camera = new PerspectiveCamera()
+    this.#renderer = createRenderer()
     this.#initCamera()
-    this.#renderer = this.#createRenderer()
 
-    if (setOrbitControls) {
-      new OrbitControls(this.#camera, this.#renderer.domElement)
-    }
-    this.#addPointLight()
+    const figureObject3D = useMeshFigure(figure) as unknown as NonNullable<
+      ReturnType<typeof useMeshFigure>
+    >
+    figureObject3D.position.y += 1
+    const plane = createPlane(10)
+    const { pointLight } = createLights()
+    pointLight.position.set(1, 6, 3)
+    this.#addObjectInScene(figureObject3D, plane, pointLight)
   }
 
-  #createRenderer() {
-    const canvas = document.createElement('canvas')
-    const renderer = new WebGLRenderer({ antialias: true, canvas })
-    return renderer
-  }
-
+  /** Правильное изменение размера рендера (с учетом угла камеры) */
   #setSizeRendererScene({ width, height }: { width: number; height: number }) {
     this.#camera.aspect = width / height
     this.#camera.fov =
@@ -54,19 +35,14 @@ export class RenderManager {
     this.#renderer.setSize(width, height)
   }
 
+  /** Инициализация камеры и вспомогательных параметров  */
   #initCamera() {
-    this.#camera.position.set(0, 0, 2)
-    this.#camera.lookAt(this.#scene.position)
+    this.#camera.position.set(0, 3, 5)
+    this.#tanFov = Math.tan(((Math.PI / 180) * this.#camera.fov) / 2)
+    new OrbitControls(this.#camera, this.#renderer.domElement)
   }
 
-  #addPointLight() {
-    const light1 = new DirectionalLight(0xffffff, 3)
-    const light2 = new AmbientLight(0x404040)
-    light1.position.set(10, 10, 4)
-    this.#scene.add(light1)
-    this.#scene.add(light2)
-  }
-
+  /** Инициализация наблюдателя изменения размера элемента */
   #initResizeObserver(el: HTMLElement) {
     const resizeObserver = new ResizeObserver((entries) => {
       const { width, height } = entries[0].contentRect
@@ -81,8 +57,18 @@ export class RenderManager {
     resizeObserver.observe(el)
   }
 
-  addMeshObject(mesh: Mesh) {
-    this.#scene.add(mesh)
+  /** Старт анимации */
+  #startAnimation() {
+    const animateFunction = () => {
+      this.#renderer.render(this.#scene, this.#camera)
+      requestAnimationFrame(animateFunction)
+    }
+    animateFunction()
+  }
+
+  /** Добавление объекта на сцену */
+  #addObjectInScene(...obj: Object3D[]) {
+    this.#scene.add(...obj)
   }
 
   mountRenderer(el: HTMLElement) {
@@ -90,13 +76,6 @@ export class RenderManager {
     this.#initResizeObserver(el)
     this.#setSizeRendererScene({ width, height })
     el.appendChild(this.#renderer.domElement)
-  }
-
-  startAnimation() {
-    const animateFunction = () => {
-      this.#renderer.render(this.#scene, this.#camera)
-      requestAnimationFrame(animateFunction)
-    }
-    animateFunction()
+    this.#startAnimation()
   }
 }

@@ -1,7 +1,7 @@
-import { MeshLambertMaterial, Mesh, BoxGeometry, SphereGeometry } from 'three'
+import { MeshPhongMaterial, Mesh, BoxGeometry, SphereGeometry } from 'three'
 
 export function useMeshFigure(figure: Figure) {
-  const material = new MeshLambertMaterial({ color: 'blue' })
+  const material = new MeshPhongMaterial({ color: 'blue' })
   switch (figure.slug) {
     case 'square': {
       const geometry = new BoxGeometry(1, 1, 1)
