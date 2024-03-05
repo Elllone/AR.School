@@ -8,8 +8,10 @@ const styleValueImg = ref<StyleValue>()
 function navigateToFigure() {
   styleValueImg.value = { viewTransitionName: props.figure.slug }
   navigateTo({
-    name: 'figure-figureSlug',
-    params: { figureSlug: props.figure.slug },
+    name: 'figure-slug',
+    params: {
+      slug: props.figure.slug,
+    },
   })
 }
 </script>

@@ -3,8 +3,10 @@ const props = defineProps<{ figure: Figure; hideLink?: boolean }>()
 
 function navigateTo3D_AR() {
   navigateTo({
-    name: 'figure-figureSlug-3d',
-    params: { figureSlug: props.figure.slug },
+    name: 'figure-slug-vr',
+    params: {
+      slug: props.figure.slug,
+    },
   })
 }
 </script>

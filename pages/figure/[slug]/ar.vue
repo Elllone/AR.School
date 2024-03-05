@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   middleware: ['is-figure-exsist'],
-  layout: 'ar3d',
+  layout: 'vr-ar',
 })
 </script>
 <template>

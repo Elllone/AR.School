@@ -7,7 +7,7 @@ useHead({
   <v-container>
     <div class="main_wrapper">
       <ar-school-welcome />
-      <aviable-figures-block />
+      <figures-container />
     </div>
   </v-container>
 </template>

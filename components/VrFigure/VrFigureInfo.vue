@@ -7,7 +7,7 @@ const props = defineProps<{ figure: Figure }>()
       <v-btn icon="mdi-information" v-bind="props" color="transparent" />
     </template>
     <template #default>
-      <figure-view-description :figure="props.figure" hide-link />
+      <figure-description :figure="props.figure" hide-link />
     </template>
   </v-dialog>
 </template>

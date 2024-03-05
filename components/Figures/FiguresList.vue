@@ -16,7 +16,7 @@ const { figures } = storeToRefs(useFiguresStore())
           :key="figure.slug"
           class="swiper-width"
         >
-          <aviable-figures-card :figure="figure" />
+          <figures-card :figure="figure" />
         </swiper-slide>
       </swiper>
     </v-container>

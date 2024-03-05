@@ -7,7 +7,7 @@
         </p>
       </div>
     </v-card-title>
-    <v-container> <aviable-figures-list /> </v-container>
+    <v-container> <figures-list /> </v-container>
   </v-card>
 </template>
 <style scoped>

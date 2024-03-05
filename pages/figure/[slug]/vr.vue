@@ -1,19 +1,19 @@
 <script setup lang="ts">
 definePageMeta({
   middleware: ['is-figure-exsist'],
-  layout: 'ar3d',
+  layout: 'vr-ar',
 })
 const {
-  params: { figureSlug },
-} = useRoute('figure-figureSlug')
+  params: { slug },
+} = useRoute('figure-slug')
 const { getFigureBySlug } = useFiguresStore()
-const figure = getFigureBySlug(figureSlug) as Figure
+const figure = getFigureBySlug(slug) as Figure
 </script>
 
 <template>
   <v-container class="h-100 d-flex justify-center align-center">
     <client-only>
-      <figure-web-gl-scene :figure="figure" />
+      <vr-figure-scene :figure="figure" />
     </client-only>
   </v-container>
 </template>

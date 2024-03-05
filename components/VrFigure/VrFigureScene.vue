@@ -7,8 +7,10 @@ const sceneHtml = ref<HTMLElement>()
 
 function openInAR() {
   navigateTo({
-    name: 'figure-figureSlug-ar',
-    params: { figureSlug: props.figure.slug },
+    name: 'figure-slug-ar',
+    params: {
+      slug: props.figure.slug,
+    },
   })
 }
 
@@ -26,7 +28,7 @@ onMounted(() => {
       </p>
     </div>
     <div class="toolbar_info">
-      <figure-web-gl-info :figure="props.figure" />
+      <vr-figure-info :figure="props.figure" />
     </div>
     <div ref="sceneHtml" class="sceneHtml"> </div>
   </div>
