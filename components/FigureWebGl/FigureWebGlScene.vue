@@ -4,6 +4,14 @@ useHead({
   title: props.figure.name,
 })
 const sceneHtml = ref<HTMLElement>()
+
+function openInAR() {
+  navigateTo({
+    name: 'figure-figureSlug-ar',
+    params: { figureSlug: props.figure.slug },
+  })
+}
+
 onMounted(() => {
   const renderManager = new RenderManager(props.figure)
   renderManager.mountRenderer(sceneHtml.value!)
@@ -14,6 +22,7 @@ onMounted(() => {
     <div class="figure_name">
       <p class="text-h5 font-weight-bold">
         {{ props.figure.name }}
+        <v-btn @click="openInAR"> Открыть в AR </v-btn>
       </p>
     </div>
     <div class="toolbar_info">
