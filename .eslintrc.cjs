@@ -20,7 +20,12 @@ module.exports = {
       },
     },
     {
-      files: ['./pages/**/*.vue', './layouts/*.vue'],
+      files: [
+        './pages/**/*.vue',
+        './layouts/*.vue',
+        './app.vue',
+        './error.vue',
+      ],
       rules: {
         'vue/multi-word-component-names': 'off',
       },
