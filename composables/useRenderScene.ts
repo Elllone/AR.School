@@ -7,6 +7,7 @@ export class RenderManager {
   #renderer: Renderer
   #tanFov!: number
   #firstHeight: number | null = null
+  #figure: Object3D
 
   constructor(figure: Figure) {
     this.#scene = new Scene()
@@ -14,14 +15,14 @@ export class RenderManager {
     this.#renderer = createRenderer()
     this.#initCamera()
 
-    const figureObject3D = useMeshFigure(figure) as unknown as NonNullable<
+    this.#figure = useMeshFigure(figure) as unknown as NonNullable<
       ReturnType<typeof useMeshFigure>
     >
-    figureObject3D.position.y += 1
-    const plane = createPlane(10)
+    this.#figure.position.y += 1
+    const plane = createPlane(8)
     const { pointLight } = createLights()
     pointLight.position.set(1, 6, 3)
-    this.#addObjectInScene(figureObject3D, plane, pointLight)
+    this.#addObjectInScene(this.#figure, plane, pointLight)
   }
 
   /** Правильное изменение размера рендера (с учетом угла камеры) */
@@ -60,6 +61,7 @@ export class RenderManager {
   /** Старт анимации */
   #startAnimation() {
     const animateFunction = () => {
+      this.#figure.rotation.y += 0.006
       this.#renderer.render(this.#scene, this.#camera)
       requestAnimationFrame(animateFunction)
     }
