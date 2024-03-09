@@ -9,7 +9,8 @@ export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: false },
   app: {
-    rootId: '__ar__school',
+    rootId: '_ar_school',
+    buildAssetsDir: '_ar_school',
   },
 
   //auto imports
