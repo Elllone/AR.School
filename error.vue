@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
 import BaseLayout from './layouts/default.vue'
-defineProps({
+const props = defineProps({
   error: Object as () => NuxtError,
 })
 
+useHead({
+  title: props.error?.message,
+})
 const handleError = () => {
   clearError({ redirect: '/' })
 }

@@ -1,14 +1,10 @@
 <script setup lang="ts">
-definePageMeta({
-  middleware: ['is-figure-exsist'],
-})
 const {
   params: { slug },
 } = useRoute('figure-slug')
-const { getFigureBySlug } = useFiguresStore()
-const figure = getFigureBySlug(slug) as Figure // Явно присваиваем переменной тип Figure, чтобы избавиться от undefined
+const figure = await getSafeFigure(slug)
 useHead({
-  title: figure.name,
+  title: figure.value.name,
 })
 </script>
 <template>

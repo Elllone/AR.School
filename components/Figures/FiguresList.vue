@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { figures } = storeToRefs(useFiguresStore())
+defineProps<{ figures: Figure[] }>()
 </script>
 
 <template>

@@ -1,4 +1,5 @@
 import { figures } from '~/server/mock/figures'
+import { figureNotFoundError } from '~/utils/errors.helper'
 
 export default defineEventHandler(async (event) => {
   const figure = figures.find(
@@ -10,8 +11,5 @@ export default defineEventHandler(async (event) => {
       data: figure,
     }
   }
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Такой фигуры не существует',
-  })
+  throw figureNotFoundError()
 })

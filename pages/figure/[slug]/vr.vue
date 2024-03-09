@@ -1,13 +1,11 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: ['is-figure-exsist'],
   layout: 'vr-ar',
 })
 const {
   params: { slug },
 } = useRoute('figure-slug')
-const { getFigureBySlug } = useFiguresStore()
-const figure = getFigureBySlug(slug) as Figure
+const figure = await getSafeFigure(slug)
 </script>
 
 <template>

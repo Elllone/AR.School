@@ -1,3 +1,6 @@
+<script setup lang="ts">
+defineProps<{ figures: Figure[] }>()
+</script>
 <template>
   <v-card color="transparent">
     <v-card-title>
@@ -7,7 +10,9 @@
         </p>
       </div>
     </v-card-title>
-    <v-container> <figures-list /> </v-container>
+    <v-container>
+      <figures-list :figures="figures" />
+    </v-container>
   </v-card>
 </template>
 <style scoped>
