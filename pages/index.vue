@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { getFiguresRequest } from '~/api/figures.request'
 useHead({
   title: 'AR.School',
 })
-const { data: figures } = useAsyncData('figures', getFiguresRequest)
+const figures = await getAllFigures()
 </script>
 <template>
   <v-container>

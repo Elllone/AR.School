@@ -1,4 +1,17 @@
-import { getFigureBySlug } from '~/api/figures.request'
+import { getFiguresRequest, getFigureBySlug } from '~/api/figures.request'
+
+/**
+ * Возвращает все фигуры
+ */
+export async function getAllFigures() {
+  const {
+    data: figures,
+    error,
+    status,
+  } = await useAsyncData('figures', getFiguresRequest)
+  if (status.value === 'error' && error.value) throw createError(error.value)
+  return figures
+}
 
 /**
  *  Возвращает фигуру по slug. Если ее нет, выкидывает ошибку [404]
