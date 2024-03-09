@@ -17,12 +17,18 @@ export async function getAllFigures() {
  *  Возвращает фигуру по slug. Если ее нет, выкидывает ошибку [404]
  */
 export async function getSafeFigure(slug: string) {
-  const { data: figure_ } = await useAsyncData('figure', async () => {
+  const {
+    data: figure_,
+    error,
+    status,
+  } = await useAsyncData('figure', async () => {
     return getFigureBySlug(slug)
   })
-  if (figure_.value === null) {
-    throw figureNotFoundError()
-  }
+  if (status.value === 'error' && error.value)
+    throw createError({
+      statusCode: 404,
+      message: 'Я не знаю такой фигуры :-[',
+    })
   const figure = computed(() => {
     return figure_.value as Figure
   })
