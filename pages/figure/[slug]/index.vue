@@ -2,7 +2,7 @@
 const {
   params: { slug },
 } = useRoute('figure-slug')
-const figure = await getSafeFigure(slug)
+const figure = await getFigureOr404(slug)
 useHead({
   title: figure.value.name,
 })

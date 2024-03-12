@@ -16,7 +16,7 @@ export async function getAllFigures() {
 /**
  *  Возвращает фигуру по slug. Если ее нет, выкидывает ошибку [404]
  */
-export async function getSafeFigure(slug: string) {
+export async function getFigureOr404(slug: string) {
   const {
     data: figure_,
     error,
