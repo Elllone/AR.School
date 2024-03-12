@@ -1,8 +1,5 @@
 <script setup lang="ts">
 const props = defineProps<{ figure: Figure }>()
-useHead({
-  title: props.figure.name,
-})
 const sceneHtml = ref<HTMLElement>()
 
 function openInAR() {
