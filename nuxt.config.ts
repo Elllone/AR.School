@@ -67,6 +67,11 @@ export default defineNuxtConfig({
   //develop
   devServer: {
     port: 5176,
+    // Для работы всех функций во время тестирования
+    https: {
+      key: './key.pem',
+      cert: './cert.pem',
+    },
   },
   experimental: {
     viewTransition: true,

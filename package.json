@@ -5,6 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "dev:host": "nuxt dev --host",
     "prettier": "prettier . --write",
     "lint": "eslint .",
     "generate": "nuxt generate",
