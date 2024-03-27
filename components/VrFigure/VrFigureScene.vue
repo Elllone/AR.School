@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const props = defineProps<{ figure: Figure }>()
-const sceneHtml = ref<HTMLElement>()
 
 function openInAR() {
   navigateTo({
@@ -10,11 +9,6 @@ function openInAR() {
     },
   })
 }
-
-onMounted(() => {
-  const renderManager = new RenderManager(props.figure)
-  renderManager.mountRenderer(sceneHtml.value!)
-})
 </script>
 <template>
   <div class="wrapper">
@@ -27,7 +21,7 @@ onMounted(() => {
     <div class="toolbar_info">
       <vr-figure-info :figure="props.figure" />
     </div>
-    <div ref="sceneHtml" class="sceneHtml"> </div>
+    <vr-figure-webgl :figure="props.figure" />
   </div>
 </template>
 
@@ -49,10 +43,5 @@ onMounted(() => {
   top: 0;
   right: 0;
   margin: 10px;
-}
-
-.sceneHtml {
-  width: 100%;
-  height: 95%;
 }
 </style>
