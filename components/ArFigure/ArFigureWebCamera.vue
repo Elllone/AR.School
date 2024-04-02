@@ -10,8 +10,6 @@ async function mountWebCamera() {
     mediaStream.value = await navigator.mediaDevices.getUserMedia({
       video: {
         facingMode: 'environment',
-        width: { ideal: 4096 },
-        height: { ideal: 2160 },
       },
       audio: false,
     })
@@ -40,3 +38,10 @@ onUnmounted(() => {
     <p class="text-h3"> Нет доступа к камере </p>
   </div>
 </template>
+
+<style scoped>
+.webCamera {
+  width: 100% !important;
+  height: 80vh !important;
+}
+</style>
