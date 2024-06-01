@@ -17,7 +17,7 @@ function navigateToFigure() {
 </script>
 
 <template>
-  <v-card color="white" min-width="280px" max-width="300px">
+  <v-card color="white" min-width="280px" min-height="280px">
     <v-card-title class="d-flex justify-center align-center">
       <img :src="figure.image" :style="styleValueImg" class="figure_img" />
     </v-card-title>
@@ -36,8 +36,7 @@ function navigateToFigure() {
 
 <style scoped>
 .figure_img {
-  width: 280px;
-  height: 280px;
+  width: 100%;
   border-radius: 4px;
 }
 </style>
